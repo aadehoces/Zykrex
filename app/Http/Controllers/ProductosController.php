@@ -14,7 +14,7 @@ class ProductosController extends Controller
         DB::table('productos')->delete($id);
         return redirect('/productos/show');
     }
-   public function update(Request $request)
+    public function update(Request $request)
     {
         $request->validate([
             'Nombre' => ['required', 'min:3',],

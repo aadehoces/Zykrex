@@ -30,6 +30,16 @@
                         </a>
                     </li>
                     @if( Auth::check() )
+                        <li class="nav-item {{  Request::is('carrito') ? 'active' : ''}}">
+                            <a class="nav-link" href="{{url('/carrito')}}" >  <h4><i class="fas fa-shopping-cart"></i>(
+                                @if(Cart::instance('carrito')->restore(auth()->user()->id))
+                                {{Cart::instance('carrito')->restore(auth()->user()->id)->count()}}
+                                @else
+                                0
+                                @endif
+                            )</h4></a>
+                                
+                        </li>
                     @if(auth()->user()->Privilegios=='Administrador')
                     <li class="nav-item {{  Request::is('productos') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/productos/show')}}">

@@ -5,6 +5,7 @@ use App\Http\Controllers\Pagecontroller;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductosController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\carrito;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,12 @@ Route::post('/productos/show', [Productoscontroller::class, 'create'])->name('pr
 Route::delete('productos/{id}',[ProductosController::class, 'delete'])->name('productos.delete');
 
 Route::put('productos/{id}',[ProductosController::class, 'update'])->name('productos.update');
+//carrito
+Route::put('producto/{id}',[carrito::class, 'add'])->name('carrito.add');
+
+Route::get('carrito',[carrito::class, 'show'])->name('carrito.show');
+
+Route::delete('carrito/{id}',[carrito::class, 'delete'])->name('carrito.delete()');
 
 //usuarios
 Route::get('/usuarios', [Pagecontroller::class, 'getUsuarios'])->name('usuarios');

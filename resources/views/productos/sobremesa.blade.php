@@ -11,16 +11,18 @@
 			<h4>{{$producto->Nombre}}</h4>
 			<h5>{{$producto->Descripcion}}</h5>
 			<p>Precio: {{$producto->Precio}}€</p>
-			<form method="post" action="">
+			<form method="post" action="{{ url("producto/{$producto->id}") }}">
+				@csrf
+				@method('PUT')
 				<input type="hidden" name="id" id="id" value="{{$producto->id}}">
-				<input type="hidden" name="nombre" id="nombre" value="{{$producto->nombre}}">
+				<input type="hidden" name="nombre" id="nombre" value="{{$producto->Nombre}}">
 				<input type="hidden" name="precio" id="precio" value="{{$producto->Precio}}">
 				<input type="hidden" name="categoria" id="Categoria" value="{{$producto->Categoria}}">
 			@if(Auth::check())
 				<label>Cantidad: </label>
 				<input type="number" name="cantidad" id="cantidad" min="1" max="10" size="1" required value="1">
 				<br>
-				<button class="btn btn-primary mt-2" name="btnaccion" value="Agregar" type="submit">Añadir a la cesta </button>
+				<button class="btn btn-primary mt-2"  type="submit">Añadir a la cesta </button>
 			@else
 				<a href="{{url('login')}}">Inicia sesión para comprar</a>
 				
